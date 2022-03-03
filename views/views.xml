@@ -1,0 +1,221 @@
+<odoo>
+  <data>
+    <!-- Vistas de alumno-->
+
+    <record model="ir.ui.view" id="escuela.alumno_list_view">
+      <field name="name">escuela.alumno.view.tree</field>
+      <field name="model">escuela.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="fecha_nacimiento"/>
+          <field name="edad"/>
+          <field name="curso_id"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- search -->
+    <record model="ir.ui.view" id="escuela.alumno_search_view">
+      <field name="name">escuela.alumno.view.search</field>
+      <field name="model">escuela.alumno</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="fecha_nacimiento"/>
+          <field name="edad"/>
+          <field name="curso_id"/>
+          <group>
+            <filter name="group_by_name" string="name" context="{'gropup_by':'name'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="escuela.alumno_form_view">
+      <field name="name">escuela.alumno.view.form</field>
+      <field name="model">escuela.alumno</field>
+      <field name="arch" type="xml">
+        <form string="Informacion alumno">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                DNI <field name="name" placeholder="dni"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre"/>
+                <field name="fecha_nacimiento"/>
+                <field name="edad"/>
+                <field name="curso_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- calendar-->
+    <record model="ir.ui.view" id="escuela.alumno_calendar_view">
+      <field name="name">escuela.alumno.view.calendar</field>
+      <field name="model">escuela.alumno</field>
+      <field name="arch" type="xml">
+        <calendar string="Fecha de nacimeinto" date_start="fecha_nacimiento" color="nombre" mode="month">
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="edad"/>
+          <field name="curso_id"/>
+        </calendar>
+      </field>
+    </record>
+
+    <!-- Vistas de curso-->
+
+    <record model="ir.ui.view" id="escuela.curso_list_view">
+      <field name="name">escuela.curso.view.tree</field>
+      <field name="model">escuela.curso</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="asignaturas_id"/>
+          <field name="alumnos_id"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- search -->
+    <record model="ir.ui.view" id="escuela.alumno_search_view">
+      <field name="name">escuela.curso.view.search</field>
+      <field name="model">escuela.curso</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="asignaturas_id"/>
+          <field name="alumnos_id"/>
+          <group>
+            <filter name="group_by_name" string="name" context="{'gropup_by':'name'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="escuela.alumno_form_view">
+      <field name="name">escuela.curso.view.form</field>
+      <field name="model">escuela.curso</field>
+      <field name="arch" type="xml">
+        <form string="Informacion alumno">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="ID"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre"/>
+                <field name="asignaturas_id"/>
+                <field name="alumnos_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vistas de asignatura-->
+
+    <record model="ir.ui.view" id="escuela.asignatura_list_view">
+      <field name="name">escuela.asignatura.view.tree</field>
+      <field name="model">escuela.asignatura</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="cursos_id"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- search -->
+    <record model="ir.ui.view" id="escuela.asignatura_search_view">
+      <field name="name">escuela.asignatura.view.search</field>
+      <field name="model">escuela.asignatura</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="cursos_id"/>
+          <group>
+            <filter name="group_by_name" string="name" context="{'gropup_by':'name'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="escuela.asignatura_form_view">
+      <field name="name">escuela.asignatura.view.form</field>
+      <field name="model">escuela.asignatura</field>
+      <field name="arch" type="xml">
+        <form string="Informacion alumno">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                ID <field name="name" placeholder="id"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="name"/>
+                <field name="nombre"/>
+                <field name="cursos_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definicion de menús -->
+    <record model="ir.actions.act_window" id="escuela.alumno_action_window">
+      <field name="name">Alumnos</field>
+      <field name="res_model">escuela.alumno</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="escuela.curso_action_window">
+      <field name="name">cursos</field>
+      <field name="res_model">escuela.curso</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="escuela.asignatura_action_window">
+      <field name="name">Asignaturas</field>
+      <field name="res_model">escuela.asignatura</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="escuela" id="escuela.menu_root"/>
+
+    <menuitem name="alumnos" id="escuela.menu_alumnos" parent="escuela.menu_root"/>
+    <menuitem name="cursos" id="escuela.menu_cursos" parent="escuela.menu_root"/>
+    <menuitem name="asignaturass" id="escuela.menu_asignaturas" parent="escuela.menu_root"/>
+
+    <menuitem name="List" id="escuela.menu_alumnos_list" parent="escuela.menu_alumnos"
+      action="escuela.alumno_action_window" />
+    <menuitem name="List" id="escuela.menu_cursos_list" parent="escuela.menu_cursos"
+      action="escuela.curso_action_window" />
+   l <menuitem name="List" id="escuela.menu_asignaturas_list" parent="escuela.menu_asignaturas"
+      action="escuela.asignatura_action_window" />
+  </data>
+</odoo>
